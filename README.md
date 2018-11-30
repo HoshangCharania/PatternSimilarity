@@ -1,0 +1,2 @@
+# PatternSimilarity
+Python Flask application to parse different sets of time series data to check for fake data sources using algorithms such as GTM, along with checking for similarity in time series patterns, using preprocessing algorithms such as DFT and PCA, followed by pattern similarity algorithms such as DTW, saxPY and cosine similarity, which group different time series columns into clusters. The time series analysis and patterns are then visualized by different graphing libraries and applications, such as Grafana and D3.js.
