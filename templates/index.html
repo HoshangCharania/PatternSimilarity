@@ -36,17 +36,21 @@
 <body>
 <div class="container-fluid">
   <div class=""jumbotron>
-  <div class=""row>
+      <div class="header">
+  <div class="row">
     <div class="col-sm-6">
   <h1>{{ symbol }} visualization:</h1>
     </div>
   </div>
-  <div class=""row>
-        <svg width="960" height="600"></svg>
-    <div class="col-sm-6">
-        <label for="customRange1">Threshold</label>
+      </div>
+        <div class="row">
+      <div class="col-sm-6">
+        <label for="customRange1">Threshold  </label>
         <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" onchange="onChange()"/>
     </div>
+  </div>
+  <div class="row">
+        <svg width="960" height="600"></svg>
   <p id="cosineMatrix">{{ output }}</p>
 </div>
 </div>
