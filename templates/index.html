@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.3.2/css/bootstrap-slider.css">
+<script src="{{ url_for('static', filename='d3.v4.min.js') }}"></script>
+<script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.3.2/bootstrap-slider.js"></script>
+ <style>
+
+        .node {
+            fill: #ccc;
+            stroke: #fff;
+            stroke-width: 1px;
+        }
+
+        .link {
+            stroke: #777;
+            stroke-width: 2px;
+        }
+        body{
+            background-color: white;
+        }
+        #ex1Slider .slider-selection {
+	background: #BABABA;
+}
+            </style>
+        </head>
+<body>
+<div class="container-fluid">
+  <div class=""jumbotron>
+  <div class=""row>
+    <div class="col-sm-6">
+  <h1>{{ symbol }} visualization:</h1>
+    </div>
+  </div>
+  <div class=""row>
+        <svg width="960" height="600"></svg>
+    <div class="col-sm-6">
+        <label for="customRange1">Threshold</label>
+        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="0" onchange="onChange()"/>
+    </div>
+  <p id="cosineMatrix">{{ output }}</p>
+</div>
+</div>
+</div>
+<script>
+$("#cosineMatrix").hide();
+ var clusters=JSON.parse(document.getElementById("cosineMatrix").innerHTML);
+ //console.log(clusters);
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
