@@ -1,26 +1,21 @@
+/**
+  * Create bootstrap slider, from slider package
+  *
+  */
+
+$('#ex1').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
+});
+
+
+/**
+  * Graph Creation
+  *
+  */
+
 graph={};
-    graph.links=[
-    {
-      "source": 1,
-      "target": 2,
-      "link": 10
-    },
-    {
-      "source": 1,
-      "target": 3,
-      "link": 1
-    },
-    {
-      "source": 2,
-      "target": 3,
-      "link": 4
-    },
-    {
-      "source": 3,
-      "target": 4,
-      "link": 7
-    }
-  ];
 years=[1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018]
 graph.nodes=[]
 for(x in years){
@@ -29,28 +24,12 @@ for(x in years){
         "id": Number(x)+1
     })
   }
-  /*graph.nodes=[
-    {
-      "label": "1998",
-      "id": 1
-    },
-    {
-      "label": "1999",
-      "id": 2
-    },
-    {
-      "label": "2000",
-      "id": 3
-    },
-    {
-      "label": "2001",
-      "id": 4
-    }
-  ]*/
-
-  cosineSimilarity= JSON.parse(document.getElementById("cosineMatrix").innerHTML);
-  onChange();
-  //console.log(cosineSimilarity);
+cosineSimilarity= JSON.parse(document.getElementById("cosineMatrix").innerHTML);
+onChange(); // Call onChange on page Load
+ /**
+  * When there is a change in the value,cal this function.
+  *
+  **/
   function onChange(){
     cosineSimilarity= JSON.parse(document.getElementById("cosineMatrix").innerHTML);
     console.log($("#ex1").val())
@@ -60,12 +39,14 @@ for(x in years){
     else{
     range=Number($("#ex1").val())/100
     }
-    console.log(range+"Hey")
-
     graph.links=createGraphLinks(cosineSimilarity,range)
     //console.log(graph.links)
     generateGraph(graph);
   }
+   /**
+    * create Graph Links when threshold is changed
+    *
+    **/
   function createGraphLinks(cosineSimilarity,threshold){
     links=[]
     for(x in cosineSimilarity){
@@ -83,6 +64,10 @@ for(x in years){
         }
     return links;
   }
+  /**
+   * Generate Graph, based on links and nodes.
+   *
+   */
   function generateGraph(graph){
     var colors = d3.scaleOrdinal(d3.schemeCategory10);
     d3.select("svg").html(null);
@@ -166,8 +151,3 @@ for(x in years){
 //    }
 // With JQuery
 }
-$('#ex1').slider({
-	formatter: function(value) {
-		return 'Current value: ' + value;
-	}
-});
